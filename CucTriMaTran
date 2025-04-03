@@ -1,0 +1,42 @@
+
+#include<stdio.h>
+#define MAX 100
+
+int check(int mat[][MAX], int n, int m, int x, int y){
+	int xx[4]= {-1, 0, 1, 0};
+	int yy[4]= {0, 1, 0, -1};
+	int max = 1;
+	int min = 1;
+	int i;
+	for(i = 0; i< 4; ++i){
+		int new_x = x + xx[i];
+		int new_y = y+ yy[i];
+		
+		if(new_x >=0 && new_x < n && new_y >= 0 && new_y < m){
+			
+                if(mat[new_x][new_y] > mat[x][y]) max = 0;
+				if(mat[new_x][new_y] < mat[x][y]) min = 0;			
+			
+		}
+	}
+	return max + min;
+}
+int main() {
+    int n, m;
+    scanf("%d %d",&n, &m);
+    int mat[MAX][MAX], sum = 0, i , j;
+    for(i =0; i < n ; i++){
+    	for(j = 0;j < m; j++){
+    		scanf("%d",&mat[i][j]);
+		}
+	}
+     
+     for(i = 0; i< n ;++i){
+     	for(j = 0; j<m;j++){
+     		if(check(mat,n,m,i,j)){
+     			sum += mat[i][j];
+			 }
+		 }
+	 }
+	 printf("%d", sum);
+}
