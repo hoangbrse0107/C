@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+int main() {
+    int t;
+    scanf("%d", &t);
+    while (t--) {
+        int n;
+        scanf("%d", &n);
+        int a[n], b[n];
+        for (int i = 0; i < n; i++) {
+            scanf("%d", &a[i]);
+        }
+        for (int i = 0; i < n; i++) {
+            scanf("%d", &b[i]);
+        }
+
+        int happy_days = 0;
+        for (int i = 0; i < n; i++) {
+            bool alice_happy = !(b[i] > 2 * a[i]);
+            bool bob_happy = !(a[i] > 2 * b[i]);
+
+            if (alice_happy && bob_happy) {
+                happy_days++;
+            }
+        }
+        printf("%d\n", happy_days);
+    }
