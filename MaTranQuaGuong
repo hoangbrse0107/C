@@ -42,3 +42,9 @@ int main() {
 	}
 	return 0;
 }
+
+// voi moi o (i,j) ta can tim ca o doi xung khi xoay 90 180 270
+		// (i,j) => ma tran in ra binh thuong
+		// (j,n - 1 - i)
+		// (n - 1 - i,n - 1 - j)
+		// (n - 1 - j,i)
