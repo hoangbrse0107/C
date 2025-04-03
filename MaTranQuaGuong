@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+int main() {
+	int t;
+	scanf("%d",&t);
+	while(t--) {
+		int n;
+		scanf("%d",&n);
+		char a[100][101];
+		for(int i = 0; i < n; i++) {
+			scanf("%s",a[i]);
+		} 		int sum = 0;
+		int b[100][100] = {0};
+		for(int i = 0; i < n; i++) {
+			for(int j = 0; j < n; j++) {
+				if(!b[i][j]) {
+					// tim ca vi tri doi xung
+					int x1 = i,y1 = j;
+					int x2 = j,y2 = n - 1 - i;
+					int x3 = n - 1 - i,y3 = n - 1 - j;
+					int x4 = n - 1 - j,y4 = i;
+					// danh dau cac o doi xung
+					b[x1][y1] = 1;
+					b[x2][y2] = 1;
+					b[x3][y3] = 1;
+					b[x4][y4] = 1;
+					// dem so luong 0 va 1 trong nhom
+					int c[2] = {0,0};
+					c[a[x1][y1] - '0']++;
+					c[a[x2][y2] - '0']++;
+					c[a[x3][y3] - '0']++;
+					c[a[x4][y4] - '0']++;
+					// tinh so phep dao nguoc toi thieu
+					if(c[0] < c[1])
+						sum += c[0];
+					else
+						sum += c[1];
+				}
+			}
+		}
+		printf("%d\n",sum);
+	}
+	return 0;
+}
