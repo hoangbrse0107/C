@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <math.h>
+
+#define MAX 100
+
+
+int main() {
+	int H, W;
+    scanf("%d %d", &H, &W);
+    int sx, sy, ex, ey, first = 1;
+    
+    char a[H][W+2];
+    
+    for(int i = 0; i < H; ++i){
+    	for(int j = 0; j <= W; ++j){
+    		scanf("%c", &a[i][j]);
+		}
+	}
+	
+	for(int i = 0; i < H; ++i){
+    	for(int j = 0; j <= W; ++j){
+    		if(a[i][j] == 'o'){
+    			if(first){
+    				sx = i; sy = j;
+    				first = 0;
+				} else {
+					ex = i; ey = j;
+				}
+			}
+		}
+	}
+	
+	printf("%d", abs(sx-ex) + abs(sy-ey));
+    
+    return 0;
+}
