@@ -1,0 +1,118 @@
+#include<stdio.h>
+/*
+void xuat(int a[], int n){
+	
+	int i;
+	for(i = 0;i < n; i++)
+		printf("%d ",a[i]);
+		printf("\n");
+	}
+
+
+void insertionSort(int a[], int n){
+	int i;
+	for(i = 1; i<n; i++){
+		int temp = a[i];
+		int j =i - 1;
+		while( j >= 0&& temp < a[j]){
+			a[j+1] = a[j];
+			--j;
+			
+		}
+		a[j+1] = temp;
+	}
+}
+*/
+
+
+void bubleSort(int a[], int n){
+	int i,j;
+	for(i = n-1; i > 0; --i ){
+		int swap = 1;
+		for(j =0; j<i;j++){
+			if(a[j] > a[j+1]){
+			int temp = a[j];
+		    a[j] = a[j+1];
+			a[j+1]= temp;
+			swap = 0;	
+		}
+	}
+	if(swap == 1) break;
+}
+}
+/*
+void selectionSort(int a[], int n){
+	
+	int i,j;
+	for(i=0;i<n-1;i++){
+		int vt_min = i;
+		for(j = i+1; j<n; j++){
+			if(a[j] <a[vt_min]){
+				vt_min = j;
+			}
+		}
+		if(vt_min != i){
+			int temp =a[i];
+			    a[i] = a[vt_min];
+			    a[vt_min]= temp;
+		}
+	}
+}
+
+void interchangeSort(int a[], int n){
+	int i,j;
+	for(i = 0; i < n-1; i++){
+		for(j = i+1; j <n; j++){
+			if(a[i] > a[j]){
+				int temp =a[i];
+				    a[i]=a[j];
+				    a[j]= temp;
+			}
+		}
+	}
+}
+*/
+int main(){
+	int n = 6;
+	int a[7] = {15, 2, 3, 1, 0, 8};
+	printf("Mang truoc khi sap xep:");
+	xuat(a,n);
+	
+// insertionSort(a,n);
+    bubleSort(a,n);
+//	selectionSort(a,n);
+//	interchangeSort(a,n);	
+	
+	printf("Mang sau khi sx: ");
+	xuat(a,n); 
+		
+}
+
+
+
+
+#include<stdio.h>
+#include<stdio.h>
+
+int compare_int( const void *a, const void *b){
+	int x = *(int *)a;
+	int y = *(int *)b;
+	return x-y;
+}
+int main(){
+	int arr[] = {5, 2, 9, 1, 5, 6};
+	int n = sizeof(arr) / sizeof(arr[0]);
+	
+	qsort(arr, n, sizeof(int ), compare_int );
+	
+	printf("Mang sau khi sap xep:");
+	int i;
+	for(i = 0; i < n; i++){
+		printf("%d ", arr[i]);
+		
+	}
+	return 0;
+}
+
+
+
