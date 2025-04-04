@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int binarySearch(int a[], int l, int r, int x) {
+    if (l > r) {
+        return 0;  // Không tìm thấy
+    }
+
+    int mid = l + (r - l) / 2;
+
+    if (a[mid] == x) {
+        return 1;  // Tìm thấy
+    } 
+    else if (a[mid] > x) {
+        return binarySearch(a, l, mid - 1, x);  // Tìm bên trái
+    } 
+    else {
+        return binarySearch(a, mid + 1, r, x);  // Tìm bên phải
+    }
+}
+
+int main() {
+    int n, t;
+    scanf("%d", &n);
+    
+    int a[n]; // Mảng đầu vào
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+
+    scanf("%d", &t);
+    for (int i = 0; i < t; i++) {
+        int x;
+        scanf("%d", &x);
+        if (binarySearch(a, 0, n - 1, x)) {
+            printf("YES\n");
+        } else {
+            printf("NO\n");
+        }
+    }
+
+    return 0;
+}
