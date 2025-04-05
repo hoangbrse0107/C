@@ -1,0 +1,179 @@
+#include <stdio.h>
+#include<math.h>
+#include<string.h>
+/*
+int main(){
+	char s[9] = "xin chao";
+	
+	printf("%c", s[6]);  //a
+}
+*/
+
+int main(){
+	char s[101];
+//	scanf("%s", s); khong nhap duoc' ' 
+//(co fgets() thi k co scanf)
+
+//	printf("%s", s);
+	
+	//char 1byte
+	//(chuoi s, soluongKituMax, nhap tren ban phim, 
+	fgets(s, sizeof(s), stdin);//(luu ca \n)
+	
+
+// gets(s)   k luu \n
+
+	puts(s);     	//print string   co san \n
+	
+}
+
+int int main(){
+	float diem;
+	char Ho_ten[1000];
+	
+	printf("Nhap diem: ");
+	scanf("%f", &diem);
+	getchar(); //giup xoa bo nho dem ( \n ) // co khi ca scanf va gets() 
+	// fflush(stdin); ( file ); == getchar();
+	
+	printf("Nhap ho ten: ");
+	gets(Ho_ten);
+	
+	printf("Ho_ten %s", Ho_ten);
+	printf("\nDiem: %2.f", diem);
+
+}
+
+
+
+#include<stdio.h>
+#include<string.h>
+int strlen(char s[]){
+	int len = 0;
+	//code here    dem so ki tu trong chuoi
+/*
+cach1	
+	int i;
+	for(i = 0; s[i] != '\0';i++){
+		++len;
+	}
+*/
+
+/*
+cach2
+vi len == i
+
+while(s[len] !='\0'){
+      ++len;
+      return len;
+    }
+*/
+/*
+cach3
+while(s[++len] != '\0'};    ++len tot hon len++
+	
+	return len - 1 ;
+}
+
+int main(){
+	char s[1001];
+	gets(s);
+	printf("%d", strlen(s));
+	
+}
+
+input:    xin chao
+output:   8// ca '\0'
+*/
+
+
+
+
+//
+#include<stdio.h>
+#include<string.h>
+
+int main(){
+	char s[1001];
+	gets(s);
+	printf("%d", strlen(s));
+}
+
+
+1.strlen()
+s = "xin chao"
+strlen(s) = 8;
+
+2.strcpy(s1, s2);
+char s1[1001] ="Xin chao cac ban";
+char s2[1001] ="NHH";
+
+printf("s1: %s\n", s1);
+printf("s2: %s\n", s2);
+
+strcpy(s1, s2);
+printf("s1: %s\n",s1);  // NHH
+printf("s2: %s\n", s2); // NHH
+
+3.strcat(s1,s2);//( noi)
+printf("s1: %s\n",s1);  // Xin chao cac banNHH
+printf("s2: %s\n", s2); // NHH
+
+4.strcmp(s1,s2);// so sanh 2 chuoi
+
+s1 < s2 => -1
+s1 == s2 => 0
+s1 > s2 => 1
+
+Ex;
+s1 = "ABC";
+s2 = "AAAAA"
+==> s1 > s2 ( A ==A, B > A) k xet nua => 1
+
+s1 = "ABc"
+s2 = "ABcd "
+
+==> -1
+
+s1 = "ABC"
+s2 = "H";
+ => s2 > s1 (H > A)
+ 
+5.strchr
+
+ strchr(s1,c): tim ki tu c dau tien trong  s1
+ 
+ s1 = "xin chao mn"
+ c = 'o'
+==> "o mn"
+==> khong co: NULL
+  
+6. strstr(s1,s2): tim chuoi s2 xuat hien trong s1
+
+s1 = "xin chao moi nguoi"
+s2 = "in"
+==>"in chao moi nguoi"
+==> Khong co: NULL
+
+7. strupr(s1): viet hoa toan bo chuoi
+
+8. strlwr(s1): viet thuong toan bo chuoi
+
+9. strrev(s1) dao chuoi
+
+   s1 = "xin chao"
+   ==> "oahc nix"
+   
+10.strtok
+
+ctype.h
+
+1. toupper(c) viet hoa 1 ki tu 
+ c = 'a'
+ ==>'A'
+ 
+2. tolower(c): viet thuong 1 ki tu
+
+3. islower(c): kiem tra ki tu thuong (T F)
+
+4. is upper(c): kiem tra ki tu hoa
