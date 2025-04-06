@@ -1,0 +1,167 @@
+#include <stdio.h>
+#include<math.h>
+#include<string.h>
+/*
+1. Ham strlen()
+*thu vien string.h
+*muc dich ham strlen() tra ve chieu dai cua chuoi , no khong dem ham null'\0'
+
+// int strlen(const char* s)
+int strlen(char s[]){
+	int i=0;
+	for(; s[i] != '\0';++i);
+		return i;
+}
+*/
+int main(){
+	char s[1000];
+	gets(s);
+	printf("%d", strlen(s));
+}
+
+
+2.Ham strcpy();
+
+// Xay dung ham
+char* strcpy(char s1[], char s2[]){
+	int i = 0, len_s2 = strlen(s2);
+	for(;i <strlen(s2); ++i){
+	s1[i] = s2[i];
+	}
+	s1[i] = '\0';
+	return s1;
+}
+int main(){
+	char s1[1000], s2[1000];
+	gets(s1);
+	gets(s2);
+	strcpy(s1,s2);
+	printf("%s",s1);
+}
+
+
+3. Ham strcat();
+- Dung de ket noi 2 chuoi . Ket qua duoc luu vao chuoi dau tien
+
+char* strcat(char s1[], char s2[]){
+	int i=0,len_s1 = strlen(s1);
+	for(;i<strlen(s2);++i){
+		s1[len_s1 + i] = s2[i];
+	}
+	s1[i + len_s1] = '\0';
+	return s1;
+}
+
+int main(){
+	char s1[1000], s2[1000];
+	gets(s1);
+	gets(s2);
+	strcat(s1,s2);
+	printf("%s",s1);
+}
+
+char* strupr(char s1[]){
+	int len_s1 = strlen(s1);
+	for(int i = 0; i< len_s1;++i){
+		if(s1[i]>= 'a' && s1[i] <='z'){
+			s1[i] -= 32;
+		}
+	}
+	return s1;
+}
+
+int main(){
+	char s1[1000];
+	gets(s1);
+	printf("%s",strupr(s1));
+}
+
+8. ham strlwr
+
+char* strlwr(char s1[]){
+	int len_s1 = strlen(s1);
+	for(int i = 0;i <len_s1; i++){
+		if(s1[i] >= 'A' &&s1[i] <= 'Z'){
+			s1[i] += 32;
+			
+		}
+	}
+	return s1;
+}
+
+int main(){
+	char s1[1000];
+	gets(s1);
+	printf("%s", strlwr(s1));
+}
+
+9. Ham strrev()
+
+char* strrev(char s1[]){
+	int len_s1 = strlen(s1);
+	for(int i=0; i< len_s1 / 2; ++i){
+		char tmp = s1[i];
+		s1[i] = s1[len_s1 - i - 1];
+		s1[len_s1 - i - 1] =tmp;
+	}
+	return s1;
+}
+
+int main(){
+	char s1[1000];
+	gets(s1);
+	printf("%s", strrev(s1));
+}
+
+
+
+
+// thu vien ctype.h
+
+chuyen chu hoa thanh chu thuong     int tolower(int c);
+chuyen chu thuong thanh chu hoa     int upper(int c);
+
+xay dung ham
+#include<ctype.h>
+int main(){
+	char c; 
+	scanf("%c",&c);
+	if(c >= 'A' && c<= 'Z'){
+		c += 32;   // chuyen hoa thanh thuong
+	}
+}
+
+int main(){
+	char c;
+	scanf("%c", &c);
+	if(isupper(c)){
+		c = tolower(c);
+	}
+	printf("%s",c);
+}
+
+
+//#include<ctype.h>
+toupper()  chuyen chu cai hoa thanh chu cai thuong
+           int tolower(int c);
+           
+islower()  kiem tra xem chu cai truyen vao co phai chu hoa khong           
+           int isupper(int c);
+		   
+int main(){
+	char c;
+	scanf("%c", &c);
+	if(c >='a' && c <= 'z'){
+		c -= 32;
+	}
+	printf("%c",c);
+}		   
+		   
+int main(){
+	char c;
+	scanf("%c",&c);
+	if(islower(c)){
+		c = toupper(c);
+	}
+	printf("%c", c);
+}		     
