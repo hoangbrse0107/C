@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Hàm so sánh dùng trong qsort để sắp xếp mảng
+int compare(const void *a, const void *b) {
+    return (*(int*)b - *(int*)a);  // Sắp xếp theo thứ tự giảm dần
+}
+
+int main() {
+    int T;
+    scanf("%d", &T);  // Đọc số lượng bộ test
+
+    while (T--) {
+        int N;
+        scanf("%d", &N);  // Đọc kích thước mảng
+        
+        int A[N];
+        for (int i = 0; i < N; i++) {
+            scanf("%d", &A[i]);  // Đọc mảng A
+        }
+
+        // Sắp xếp mảng theo thứ tự giảm dần
+        qsort(A, N, sizeof(int), compare);
+
+        // Tìm hai số lớn nhất khác nhau
+        int max1 = A[0];
+        int max2 = -1;  // Khởi tạo max2 không phải là một giá trị hợp lệ
+
+        for (int i = 1; i < N; i++) {
+            if (A[i] != max1) {
+                max2 = A[i];
+                break;  // Đã tìm thấy max2 khác max1
+            }
+        }
+
+        // In kết quả
+        printf("%d\n", max1 + max2);
+    }
+
+    return 0;
+}
