@@ -1,0 +1,37 @@
+#include<stdio.h>
+int main(){
+	int a[100][100];
+	int num;
+	scanf("%d",&num);
+	
+	int i,j;
+	for (i = 0; i< num;i++){
+		for(j = 0; j<num;j++){
+			scanf("%d",&a[i][j]);
+		}
+	} 
+	for( i = 0; i < num;i++){
+		int temp = a[i][i];
+		a[i][i] = a[i][num-i-1];
+		a[i][num-i-1] = temp;
+	}
+	for(i = 0; i< num;i++){
+		for(j=0;j<num;j++){
+			printf("%d ", a[i][j]);  
+		}
+			  printf("\n");
+	}
+	  }
+	// doi duong cheo chinh = duong cheo phu
+	// duong cheo chinh a[i][i] 
+	// duong cheo phu   a[i][num - i - 1]
+/*	
+input
+5               
+1 2 3 4 5       
+5 6 8 2 4      
+9 5 6 3 4
+2 6 8 4 5
+5 6 3 2 1 
+
+*/
