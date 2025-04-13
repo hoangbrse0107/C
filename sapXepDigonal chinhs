@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+void bubbleSort(int a[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (a[j] > a[j + 1]) {
+                int temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    int a[n][n];
+    
+    // Đọc ma trận
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &a[i][j]);
+        }
+    }
+    
+    // Tạo mảng chứa các phần tử trên đường chéo chính
+    int diagonal[n];
+    for (int i = 0; i < n; i++) {
+        diagonal[i] = a[i][i];
+    }
+    
+    // Sắp xếp mảng đường chéo chính
+    bubbleSort(diagonal, n);
+    
+    // Gán lại các phần tử đã sắp xếp vào đường chéo chính
+    for (int i = 0; i < n; i++) {
+        a[i][i] = diagonal[i];
+    }
+    
+    // In ma trận sau khi sắp xếp
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%d ", a[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
