@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <string.h>
+/*
+Test case 1: "00" → "A".
+
+Test case 2: "00" → "A", "11" → "G" → "AG".
+
+Test case 3: "10" → "C", "10" → "C", "10" → "C" → "CCC".
+
+Test case 4: "10" → "C", "01" → "T" → "CT".
+*/
+int main() {
+    int T;
+    scanf("%d", &T);
+    
+    while (T--) {
+        int N;
+        scanf("%d", &N);
+        
+        char S[1001];
+        scanf("%s", S);
+        
+        char dna[501]; // N/2 + 1
+        int dna_index = 0;
+        
+        for (int i = 0; i < N; i += 2) {
+            char c1 = S[i];
+            char c2 = S[i+1];
+            
+            if (c1 == '0' && c2 == '0') {
+                dna[dna_index++] = 'A';
+            } else if (c1 == '0' && c2 == '1') {
+                dna[dna_index++] = 'T';
+            } else if (c1 == '1' && c2 == '0') {
+                dna[dna_index++] = 'C';
+            } else if (c1 == '1' && c2 == '1') {
+                dna[dna_index++] = 'G';
+            }
+        }
+        
+        dna[dna_index] = '\0';
+        printf("%s\n", dna);
+    }
+    
+    return 0;
+}
